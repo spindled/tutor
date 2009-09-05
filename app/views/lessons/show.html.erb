@@ -1,3 +1,41 @@
+<style>
+	#content {
+		border-style: solid; 
+		padding: 10px; 
+		margin-left: 5px; 
+		margin-right: 5px; 
+		border:1px solid #E3942C;
+	}
+	
+	.dropshadow{
+		float:left;
+		clear:left;
+		background: url(/images/shadowAlpha.png) no-repeat bottom right !important;
+		background: url(/images/shadow.gif) no-repeat bottom right;
+		margin: 10px 0 10px 10px !important;
+		margin: 10px 0 10px 5px;
+		width: 500px;
+		padding: 0px;
+	}
+	.innerbox{
+		position:relative;
+		bottom:6px;
+		right: 6px;
+		border: 1px solid #999999;
+		padding:4px;
+		margin: 0px 0px 0px 0px;
+	}
+	.innerbox{
+		/* IE5 hack */
+		\margin: 0px 0px -3px 0px;
+		ma\rgin:  0px 0px 0px 0px;
+	}	
+	.innerbox p{		
+		font-size:14px;
+		margin: 3px;
+	}
+	
+</style>
 <p>
   <b>Title:</b>
   <%=h @lesson.title %>
@@ -10,9 +48,13 @@
 
 <p>
   <b>Content:</b>
-  <%= RedCloth.new(@lesson.content).to_html %>
+  <div class="dropshadow">
+	<div class="innerbox">	
+      <%= RedCloth.new(@lesson.content).to_html %>
+	</div>
+  </div>
 </p>
-
+<div style="clear: both"/>
 
 <%= link_to 'Edit', edit_lesson_path(@lesson) %> |
 <%= link_to 'Back', lessons_path %>
