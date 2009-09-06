@@ -1,3 +1,5 @@
 <h1>Tutor</h1>
 <h3><%= @num_lessons %> Lessons</h3>
+<h4>Most recent lesson: <%= link_to @most_recent_lesson.title, @most_recent_lesson %>
+<br/>	
 <%= link_to 'View Lessons', lessons_path %>
