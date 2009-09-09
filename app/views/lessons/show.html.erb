@@ -55,6 +55,28 @@
   </div>
 </p>
 <div style="clear: both"/>
+<% @lesson.posts.each do |post| %>
+	<%= post.name %><br/>
+<% end %>
+<h3>Add a comment</h3>
+
+<% form_for @post, :url => lesson_posts_path(@lesson.id) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.submit 'Submit' %>
+  </p>
+<% end %>
+
+<div style="clear: both"/>
 
 <%= link_to 'Edit', edit_lesson_path(@lesson) %> |
 <%= link_to 'Back', lessons_path %>
