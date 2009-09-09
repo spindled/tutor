@@ -37,8 +37,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  # POST /posts
-  # POST /posts.xml
+  # POST /lesson/1/posts
+  # POST /lesson/1/posts.xml
   def create
     puts params
     @post = Post.new(params[:post])
