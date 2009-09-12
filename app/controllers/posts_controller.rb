@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
+  before_filter :find_lesson
+  
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.all
+    @posts = @lesson.posts
 
     respond_to do |format|
       format.html # index.html.erb
@@ -37,22 +39,12 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  # POST /lesson/1/posts
-  # POST /lesson/1/posts.xml
   def create
-    puts params
     @post = Post.new(params[:post])
-    @post.lesson_id = params[:lesson_id]
-
-    respond_to do |format|
-      if @post.save
-        flash[:notice] = 'Post was successfully created.'
-        format.html { redirect_to(lesson_url(params[:lesson_id])) }
-        format.xml  { render :xml => @post, :status => :created, :location => @post }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
-      end
+    if (@lesson.posts << @post)
+      redirect_to(lesson_url(@lesson))
+    else
+      render(:template => 'lessons/show', :locals => {:lesson => @lesson})
     end
   end
 
@@ -83,5 +75,13 @@ class PostsController < ApplicationController
       format.html { redirect_to(posts_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private 
+  
+  def find_lesson
+    lesson_id = params[:lesson_id]
+    return(redirect_to(lessons_url)) unless lesson_id
+    @lesson = Lesson.find(lesson_id)
   end
 end

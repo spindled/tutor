@@ -10,16 +10,8 @@ class LessonsController < ApplicationController
     end
   end
 
-  # GET /lessons/1
-  # GET /lessons/1.xml
   def show
     @lesson = Lesson.find(params[:id])
-    @post = Post.new
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @lesson }
-    end
   end
 
   # GET /lessons/new
