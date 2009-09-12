@@ -59,6 +59,7 @@
 	<%= post.name %><br/>
 <% end %>
 <h3>Add a comment</h3>
+<h2>ID: <%= @lesson_id %></h2>
 <% form_for Post.new, :url => lesson_posts_path(@lesson.id) do |f| %>
   <%= f.error_messages %>
 
