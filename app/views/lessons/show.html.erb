@@ -55,11 +55,12 @@
   </div>
 </p>
 <div style="clear: both"/>
-<% @lesson.posts.each do |post| %>
-	<%= post.name %><br/>
+
+<% unless @lesson.posts.empty? %>
+	<%= render :partial => "/posts/post", :collection => @lesson.posts %>
 <% end %>
+
 <h3>Add a comment</h3>
-<h2>ID: <%= @lesson_id %></h2>
 <% form_for Post.new, :url => lesson_posts_path(@lesson.id) do |f| %>
   <%= f.error_messages %>
 

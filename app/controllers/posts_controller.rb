@@ -6,7 +6,6 @@ class PostsController < ApplicationController
   end
   
   def index_all
-    puts 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     @posts = Post.all
   end
 
