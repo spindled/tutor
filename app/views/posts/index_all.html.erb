@@ -1,0 +1,15 @@
+<h1>Listing posts</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Comment</th>
+  </tr>
+
+<% @posts.each do |post| %>
+  <tr>
+    <td><%=h post.name %></td>
+    <td><%=h post.comment %></td>
+  </tr>
+<% end %>
+</table>

@@ -1,8 +1,13 @@
 class PostsController < ApplicationController
-  before_filter :find_lesson
+  before_filter :find_lesson, :except => :index_all
   
   def index
     @posts = @lesson.posts
+  end
+  
+  def index_all
+    puts 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    @posts = Post.all
   end
 
   def create
