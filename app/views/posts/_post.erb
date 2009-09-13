@@ -1,4 +1,7 @@
-<%=h post.name %> on <%= post.created_at.strftime("%B %d, %Y") %>
-<p>
+<div class="comment">
+	<h3>
+		<span class="author"><%=h post.name %></span> <span class="date">on <%= post.created_at.strftime("%b %d, %y") %></span>
+	</h3>
 <%=h post.comment %>	
 	</p>
+</div>	
