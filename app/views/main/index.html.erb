@@ -1,3 +1,9 @@
+<style>
+.css1 { font-size: 1.0em; }
+.css2 { font-size: 1.2em; }
+.css3 { font-size: 1.4em; }
+.css4 { font-size: 1.6em; }
+</style>
 <h1>Tutor</h1>
 <h3><%= @num_lessons %> Lessons</h3>
 <% if @most_recent_lesson %>
@@ -5,3 +11,6 @@
 		<br/>	
 <% end %>
 <%= link_to 'View Lessons', lessons_path %>
+<% tag_cloud @tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
+  <%= link_to tag.name, tagged_url(tag.name), :class => css_class %>
+<% end %>

@@ -4,6 +4,10 @@ class LessonsController < ApplicationController
     @lessons = Lesson.all
   end
 
+  def tagged
+    @lessons = Lesson.find_tagged_with(params[:id])
+  end
+
   def show
     @lesson = Lesson.find(params[:id])
   end
